@@ -1,5 +1,5 @@
 {
-  "name": "ratatouille",
+  "name": "@koleok/ratatouille",
   "version": "1.3.0",
   "description": "A Node.js interface to Allrecipes.com",
   "main": "index.js",
