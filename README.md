@@ -7,48 +7,50 @@ the steps involved.
 ### Installation
 
 ```
-npm install @captainsafia/ratatouille
+npm install @koleok/ratatouille
 ```
 
 ### Usage
 
-```
-> import Ratatouille from '@captainsafia/ratatouille';
-> const recipe = new Ratatouille('http://allrecipes.com/recipe/254910/kicked-up-mac-cheese');
-> recipe.readyInTime
-'25 minutes'
-> recipe.prepTime
-'10 minutes'
-> recipe.cookTime
-'15 minutes'
-> recipe.calories
-'830'
-> recipe.ingredients
-[ { quantity: '14.5',
-    unit: 'ounce',
-    preparation: '',
-    name: 'package macaroni and cheese mix' },
-  { quantity: '1/2', unit: 'cup', preparation: '', name: 'milk' },
-  { quantity: '1/2',
-    unit: 'cup',
-    preparation: 'divided',
-    name: 'butter' },
-  { quantity: '15',
-    unit: 'ounce',
-    preparation: 'drained',
-    name: 'can Libby\'s® Sweet Peas' },
-  { quantity: '15',
-    unit: 'ounce',
-    preparation: 'drained',
-    name: 'can Libby\'s® Whole Kernel Sweet Corn' },
-  { quantity: '4',
-    unit: 'ounce',
-    preparation: 'drained',
-    name: 'jar diced pimentos' },
-  { quantity: '1/2',
-    unit: 'cups',
-    preparation: '',
-    name: 'panko bread crumbs' } ]
+```typescript
+import ratatouille from '@koleok/ratatouille'
+
+const recipe = ratatouille(
+  'http://allrecipes.com/recipe/254910/kicked-up-mac-cheese'
+)
 ```
 
-![Ratatouille Demo](ratatouille-demo.png)
+### Result
+
+```json
+{
+  "name": "Kicked Up Mac & Cheese",
+  "servings": 4,
+  "readyInTime": "25 mins",
+  "prepTime": "10 mins",
+  "cookTime": "15 mins",
+  "nutrition": {
+    "calories": "830",
+    "protein": "28.1g",
+    "carbohydrates": "120.5g",
+    "fat": "30.7g",
+    "cholesterol": "77.8mg",
+    "sodium": "1670.8mg"
+  },
+  "ingredients": [
+    "1 (14.5 ounce) package macaroni and cheese mix",
+    "½ cup milk",
+    "½ cup butter, divided",
+    "1 (15 ounce) can Libby's® Sweet Peas, drained",
+    "1 (15 ounce) can Libby's® Whole Kernel Sweet Corn, drained",
+    "1 (4 ounce) jar diced pimentos, drained",
+    "1 ½ cups panko bread crumbs"
+  ],
+  "steps": [
+    "Prepare macaroni and cheese with milk and 1/4 cup butter, following package directions. Gently stir in peas, corn and pimentos.",
+    "Place in 3-quart casserole dish.",
+    "Melt remaining 1/4 cup butter, mix with breadcrumbs, and sprinkle evenly over casserole. Place under broiler about 2 minutes or until top is lightly browned."
+  ],
+  "url": "https://allrecipes.com/recipe/254910/kicked-up-mac-cheese"
+}
+```
