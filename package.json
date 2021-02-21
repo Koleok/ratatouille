@@ -27,7 +27,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "types": "index.d.ts",
+  "types": "lib/index.d.ts",
   "devDependencies": {
     "@types/cheerio": "^0.22.24",
     "@types/jest": "^26.0.20",
