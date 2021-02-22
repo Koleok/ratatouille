@@ -1,8 +1,10 @@
 import cheerio from 'cheerio'
 import fetch from 'node-fetch'
 
+import type { Recipie } from './types'
+
 function getName($: cheerio.Root) {
-  return $("meta[property='og:title']").attr('content')
+  return $("meta[property='og:title']").attr('content') || 'Recipie not found'
 }
 
 function getServings($: cheerio.Root) {
@@ -62,7 +64,7 @@ function getSteps($: cheerio.Root) {
   ).map(({ children }: any) => children[0].data.trim())
 }
 
-export function parse($: cheerio.Root) {
+export function parse($: cheerio.Root): Omit<Recipie, 'url'> {
   return {
     name: getName($),
     servings: getServings($),
@@ -75,7 +77,7 @@ export function parse($: cheerio.Root) {
   }
 }
 
-export default function scrape(url: string) {
+export default function scrape(url: string): Promise<Recipie> {
   return fetch(url)
     .then(res => res.text())
     .then(cheerio.load)
